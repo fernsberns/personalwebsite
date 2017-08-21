@@ -1,0 +1,27 @@
+{
+  "name": "company",
+  "version": "1.0.0",
+  "description": "generic website by john bernad",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fernsberns/company.git"
+  },
+  "author": "John Bernad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fernsberns/company/issues"
+  },
+  "homepage": "https://github.com/fernsberns/company#readme",
+  "dependencies": {
+    "angular-route": "^1.6.5",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "mongojs": "^2.4.1",
+    "mongolab-data-api": "^1.1.6",
+    "socket.io": "^2.0.3"
+  }
+}

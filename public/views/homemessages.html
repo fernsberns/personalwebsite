@@ -1,0 +1,210 @@
+ 
+ <div class="py-5 bg-primary" style="overflow-x:hidden;">
+    <div class="row">
+      <div class="col-md-2">
+        <a class="btn btn-primary btn-lg" style="width:107%;" href="#!/home"><small>Home</small> <i class=""></i></a>
+        <a class="btn btn-primary btn-lg" style="width:107%;" href="#!/home"><small>Account </small><i class=""></i></a>
+        <a class="btn btn-primary btn-lg" style="width:107%;" href="#!/home"><small>Preferences </small><i class=""></i></a>
+        <a class="btn btn-primary btn-lg" style="width:107%;background-color:#008ab8;" href="#!/home"><small>Messages</small> <i class=""></i></a>
+        <a class="btn btn-primary btn-lg" style="width:107%;"  ng-click="logout()" href="#"><small>Log out </small><i class=""></i></a>
+      </div>
+      <div class="col-md-9 animated slideInUp" style="background-color: white;box-shadow: 2px 2px 10px grey;">
+        
+<br>
+    <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-10">
+          
+          <div class="page-header">
+                  <h2 class="text-primary">
+                  Messages
+                  </h2>
+          </div>
+
+        </div>
+        <div class="col-md-2">
+          
+          <div ng-show="" class="btn-group">
+                 <br><br><br>
+                <button class="btn btn-link" ng-bind="username"><strong>
+                    </strong></button> 
+                    <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                    <li>
+                    <a href="#">
+                      
+                    <a id="modal-138320" href="#modal-container-138320" role="button" class="btn" data-toggle="modal">Change user</a>
+
+                    </a>
+                  </li> 
+                </ul>
+          </div>
+
+        </div>
+      </div>
+
+      
+
+
+
+      <br>
+      <div class="row">
+        <div style="height:500px;overflow-y:scroll; overflow-x:hidden;" id="loginBody" class="col-md-3">
+          <table class="table">
+            <thead>
+              <tr>
+                
+                <th class="text-info">
+    
+                </th>
+
+                <th>
+                  
+                </th>
+                <th>
+                  {{users.length}}
+                </th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr class="Default" ng-repeat="users in listofusers" style="background-color: #f9f9ff;" >
+                <td class="text-info">
+                  {{users.name}}
+                </td>
+                <td><strong>
+                  
+                  </strong>
+                </td>
+                <td class="text-primary">
+                  <span class="text-muted "> <p style="font-size: 10px;margin-bottom:-15px;" class="h6">{{users.time | date:"h:mma MM/dd/yyyy"}}</p> </span>
+                  <small ng-show="">active</small>
+                  <small ng-show="">inactive</small>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+          <input type="text" ng-bind="users.name=username" ng-show="" ng-model="users.name">
+          <input type="text" ng-show="" id="tmstmp" ng-model="users.time = example"> 
+          
+        </div>
+        <div class="col-md-9">
+        
+        <div class="card">
+        <div class="card-heading " style="background-color: #e5e5ff;" >
+          <h3 class="card-title text-primary m-2">
+            Chat Box
+          </h3>
+        </div>
+        <div class="card-body text-info" id="messageBody" style="overflow-y:scroll; height:380px;">
+            <div ng-repeat="messages in listofmessages">
+                <div>
+                  <strong>&nbsp&nbsp&nbsp{{messages.name}}: </strong>&nbsp&nbsp&nbsp&nbsp{{messages.message}}
+                  <span class="text-muted pull-right"> <p style="font-size: 10px; margin-right:5px;" class="h6">{{messages.time | date:"h:mma MM/dd/yyyy"}}</p> </span>
+                  <hr>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer " style="background-color: #f9f9ff;">
+          <form>
+          <br>
+          <input type="text" ng-show="" ng-model="messages.name = users.name">
+          <input type="text" ng-show="" id="tmstmp" ng-model="messages.time = example"> 
+          <div class="input-group">
+                    <input type="text" class="form-control" ng-model="messages.message" name="search">
+                      <div class="input-group-btn">
+                        <button class="btn btn-secondary" onclick="gettmstmp()" ng-click="addMessage()" type="submit"><i class="fa fa-fw fa-paper-plane"></i></button>
+
+                      </div>
+          </div>
+
+        </form>
+        </div>
+      </div>
+
+        
+
+      <br><br><br> 
+        </div>
+      </div>
+       
+
+      
+      <div class="modal fade" id="modal-container-138320" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+               
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×
+              </button>
+              
+            </div>
+            <div class="modal-body">
+              <form><strong>
+              &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp <input type="text" name="username" placeholder="name here" class="form-control" onkeydown = "if (event.keyCode == 13)
+                          document.getElementById('btnSearch').click()" ng-model="username" autofocus>  
+              </strong>
+              </form>
+            </div>
+
+            <div class="modal-footer">
+              
+              <button class="btn btn-primary" id = "btnSearch"
+                  onclick="loginuser();" ng-click="addUser()" data-dismiss="modal">
+                Done
+              </button> 
+              
+              
+            
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+      </div>
+    </div>
+    <div class="container"> </div>
+  </div>
+  <div class="py-1 bg-info" id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <p class="text-left">Subscribe to get free email updates</p>
+          <form class="form-inline">
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Your e-mail here"> </div>
+            <button type="submit" class="btn btn-primary mx-1">Subscribe</button>
+          </form>
+        </div>
+        <div class="col-4 col-md-1 align-self-center">
+          <a href="https://www.facebook.com" target="blank"><i class="fa fa-fw fa-facebook fa-2x text-white"></i></a>
+        </div>
+        <div class="col-4 col-md-1 align-self-center">
+          <a href="https://twitter.com" target="blank"><i class="fa fa-fw fa-twitter fa-2x text-white"></i></a>
+        </div>
+        <div class="col-4 col-md-1 align-self-center">
+          <a href="https://www.instagram.com" target="blank"><i class="fa fa-fw fa-instagram text-white fa-2x"></i></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 display-5 text-muted text-center">
+          <p>© Copyright 2017 JohnBernad - All rights reserved. </p>
+        </div>
+      </div>
+    </div>
+  </div>
