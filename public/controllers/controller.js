@@ -3,6 +3,7 @@ var EMLinput;
 var EML;
 var PSS;
 
+
 WebApp.config(['$routeProvider', function($routeProvider){
 
 	$routeProvider
@@ -21,7 +22,7 @@ WebApp.config(['$routeProvider', function($routeProvider){
 			}
 		},
 		templateUrl: 'views/home.html',
-		controller: 'loginCtrl'
+		controller: 'ChatController'
 	})
 	.when('/messages',{
 		resolve: {
@@ -107,6 +108,9 @@ var socket = io.connect('http://localhost:3000');
 
 var myVar;
 
+var uname;
+
+var mname;
 
 var refresh=function(){
 	$http.get('/listofmessages').then(function(response){
@@ -146,6 +150,9 @@ var refresh4=function(){
 			if ($scope.listofaccounts[i].email == EMLinput) {
 				EML = $scope.listofaccounts[i].email;
 				PSS = $scope.listofaccounts[i].password;
+				$scope.mname = $scope.listofaccounts[i].fname;
+				$scope.uname = 'Welcome, ' + $scope.listofaccounts[i].fname;
+				console.log(uname);
 			};
 		};
 	});

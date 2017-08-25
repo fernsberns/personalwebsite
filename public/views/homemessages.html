@@ -1,7 +1,8 @@
  
- <div class="py-5 bg-primary" style="overflow-x:hidden;">
+ <div class="py-5 bg-primary" style="overflow-x:hidden;" ng-controller="ChatController">
     <div class="row">
       <div class="col-md-2">
+        <a class="btn btn-primary btn-lg" style="width:107%;" href="#!/home"><small>{{uname}}</small> <i class=""></i></a>
         <a class="btn btn-primary btn-lg" style="width:107%;" href="#!/home"><small>Home</small> <i class=""></i></a>
         <a class="btn btn-primary btn-lg" style="width:107%;" href="#!/home"><small>Account </small><i class=""></i></a>
         <a class="btn btn-primary btn-lg" style="width:107%;" href="#!/home"><small>Preferences </small><i class=""></i></a>
@@ -112,7 +113,7 @@
         <div class="card-footer " style="background-color: #f9f9ff;">
           <form>
           <br>
-          <input type="text" ng-show="" ng-model="messages.name = users.name">
+          <input type="text" ng-show="" ng-model="messages.name = mname">
           <input type="text" ng-show="" id="tmstmp" ng-model="messages.time = example"> 
           <div class="input-group">
                     <input type="text" class="form-control" ng-model="messages.message" name="search">
