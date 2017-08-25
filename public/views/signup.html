@@ -2,18 +2,21 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 offset-md-3 my-5 py-1 animated fadeInDown" style="box-shadow: 2px 2px 10px grey;">
-          <form class="px-4 my-4">
+          <form class="px-4 my-4" ng-controller="ChatController">
             <div class="form-group">
-              <input type="text" class="form-control" autofocus placeholder="First Name" ng-model="email"> </div>
+              <input type="text" class="form-control" autofocus ng-init="accounts.fname" placeholder="First Name" ng-model="accounts.fname"> </div>
               <div class="form-group"> 
-              <input type="text" class="form-control" autofocus placeholder="Last Name" ng-model="email"> </div>
+              <input type="text" class="form-control" autofocus ng-init="accounts.lname" placeholder="Last Name" ng-model="accounts.lname"> </div>
               <div class="form-group"> 
-              <input type="text" class="form-control" autofocus placeholder="Email" ng-model="email"> </div>
+              <input type="text" class="form-control" autofocus ng-init="accounts.email" placeholder="Email" ng-model="accounts.email"> </div>
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Password" ng-model="password"> </div>
+              <input type="password" class="form-control" ng-init="accounts.password" placeholder="Password" ng-model="accounts.password"> </div>
               <div class="form-group">
-              <input type="password" class="form-control" placeholder="Confirm Password" ng-model="password"> </div>
-            <button type="button"  ng-click="submit()" class="btn btn-primary">Create Account</button>
+              <input type="password" class="form-control" ng-init="accounts.cpassword" placeholder="Confirm Password" ng-model="accounts.cpassword"> </div>
+
+            <input style="background-color:grey; cursor: not-allowed;width:31%;" ng-hide="accounts.fname && accounts.lname && accounts.email && accounts.password && accounts.cpassword" onclick="alert('Please do not leave any blank inputs')" class="btn btn-basic text-white" value="Create Account">
+
+            <a href="#!/login"><input ng-show="accounts.fname && accounts.lname && accounts.email && accounts.password && accounts.cpassword " type="submit" onclick="alert('account created successfully')" ng-click="addUser()" class="btn btn-primary" value="Create Account"></a>
             <br>
             <a href="#!/login"><small>Already have an account?</small></a>
             <br>

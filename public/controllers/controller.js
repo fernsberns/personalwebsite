@@ -44,7 +44,8 @@ WebApp.config(['$routeProvider', function($routeProvider){
 
 	})
 	.when('/signup',{
-		templateUrl: 'views/signup.html'
+		templateUrl: 'views/signup.html',
+		controller: 'ChatController'
 	})
 	.when('/contactus',{
 		templateUrl: 'views/contactus.html'
@@ -180,9 +181,9 @@ $scope.addMessage= function(){
 };
 
 $scope.addUser= function(){
-	console.log($scope.users);
+	console.log($scope.accounts);
 
-	$http.post('/listofusers', $scope.users).then(function(response){
+	$http.post('/listofaccounts', $scope.accounts).then(function(response){
 		console.log(response);
 		refresh2();
 		socket.emit('refresh2');
