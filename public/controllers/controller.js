@@ -1,6 +1,7 @@
 var WebApp = angular.module('WebApp', ['ngRoute']);
-
-
+var EMLinput;
+var EML;
+var PSS;
 
 WebApp.config(['$routeProvider', function($routeProvider){
 
@@ -39,6 +40,8 @@ WebApp.config(['$routeProvider', function($routeProvider){
 	.when('/login',{
 		templateUrl: 'views/login.html',
 		controller: 'loginCtrl'
+
+
 	})
 	.when('/signup',{
 		templateUrl: 'views/signup.html'
@@ -58,19 +61,37 @@ WebApp.config(['$routeProvider', function($routeProvider){
 
 //logincontroller
 
-WebApp.controller('loginCtrl', function($scope, $location,$rootScope){
+WebApp.controller('loginCtrl', function($scope, $location, $rootScope){
+
+var myVar;
+
+		myVar = setInterval(alertFunc, 10);
+
+		function alertFunc() {
+  
+			EMLinput = $scope.email;
+
+		}	
+
+
 	$scope.submit = function(){
-	if($scope.email == 'admin' && $scope.password == 'pass'){
+
+
+
+	if($scope.email == EML && $scope.password == PSS ){
 		$rootScope.loggedIn = true;
 		$location.path('/home');
 		}
 	else{
 		alert('invalid credentials');
+		
 		};
 	};
 	$scope.logout = function(){
 		$rootScope.loggedIn = false;
 	};
+
+
 
 	
 });
@@ -84,7 +105,6 @@ WebApp.controller('ChatController', ['$scope', '$http', function($scope, $http) 
 var socket = io.connect('http://localhost:3000');
 
 var myVar;
-
 
 
 var refresh=function(){
@@ -114,9 +134,27 @@ var refresh2=function(){
 
 };
 
+var refresh4=function(){
+	$http.get('/listofaccounts').then(function(response){
+		console.log("I got the data I requested");
+		$scope.listofaccounts = response.data;
+		console.log($scope.listofaccounts.length);
+		console.log(EMLinput);
+		for (var i = $scope.listofaccounts.length - 1; i >= 0; i--) {
+			console.log($scope.listofaccounts[i].email);
+			if ($scope.listofaccounts[i].email == EMLinput) {
+				EML = $scope.listofaccounts[i].email;
+				PSS = $scope.listofaccounts[i].password;
+			};
+		};
+	});
+
+};
+
 
 refresh();
 refresh2();
+refresh4();
 
 myVar = setInterval(alertFunc, 1000);
 
@@ -126,7 +164,9 @@ function alertFunc() {
 
 	refresh2();
 
-}
+	refresh4();
+
+};
 
 
 
@@ -195,6 +235,13 @@ $scope.updateScore=function(){
 		refresh();
 	});
 };
+
+
+
+
+
+
+
 
 (function myLoop (i) {          
    setTimeout(function () {   

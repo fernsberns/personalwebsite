@@ -1,11 +1,99 @@
-var ChatApp = angular.module('ChatApp', []);
-ChatApp.controller('ChatController', ['$scope', '$http', function($scope, $http) {
+var WebApp = angular.module('WebApp', ['ngRoute']);
+
+var EML;
+var PSS = 'pass';
+
+WebApp.config(['$routeProvider', function($routeProvider){
+
+	$routeProvider
+	.when('/',{
+		templateUrl: 'views/landingpage.html'
+	})
+	.when('/home',{
+		resolve: {
+			"check": function($location, $rootScope){
+				if($rootScope.loggedIn == true){
+					$location.path('/home');
+				}
+				else{
+					$location.path('/');
+				}
+			}
+		},
+		templateUrl: 'views/home.html',
+		controller: 'loginCtrl'
+	})
+	.when('/messages',{
+		resolve: {
+			"check": function($location, $rootScope){
+				if($rootScope.loggedIn == true){
+					$location.path('/messages');
+				}
+				else{
+					$location.path('/');
+				}
+			}
+		},
+		templateUrl: 'views/homemessages.html',
+		controller: 'ChatController'
+	})
+	.when('/login',{
+		templateUrl: 'views/login.html',
+		controller: 'loginCtrl'
+
+
+	})
+	.when('/signup',{
+		templateUrl: 'views/signup.html'
+	})
+	.when('/contactus',{
+		templateUrl: 'views/contactus.html'
+	})
+	.otherwise({
+		redirectTo: '/'
+	});
+
+
+
+}]);
+
+
+
+//logincontroller
+
+WebApp.controller('loginCtrl', function($scope, $location, $rootScope){
+
+
+	$scope.submit = function(){
+
+	
+
+	if($scope.email == 'admin' && $scope.password == 'pass' ){
+		$rootScope.loggedIn = true;
+		$location.path('/home');
+		}
+	else{
+		alert('invalid credentials');
+		};
+	};
+	$scope.logout = function(){
+		$rootScope.loggedIn = false;
+	};
+
+
+
+	
+});
+
+
+//chatcontroller
+
+WebApp.controller('ChatController', ['$scope', '$http', function($scope, $http) {
 	console.log("Hello World from controller");
 
 var socket = io.connect('http://localhost:3000');
 
 var myVar;
-
 
 
 var refresh=function(){
@@ -35,9 +123,20 @@ var refresh2=function(){
 
 };
 
+var refresh4=function(){
+	$http.get('/listofaccounts').then(function(response){
+		console.log("I got the data I requested");
+		$scope.listofaccounts = response.data;
+		
+
+	});
+
+};
+
 
 refresh();
 refresh2();
+refresh4();
 
 myVar = setInterval(alertFunc, 1000);
 
@@ -116,6 +215,13 @@ $scope.updateScore=function(){
 		refresh();
 	});
 };
+
+
+
+
+
+
+
 
 (function myLoop (i) {          
    setTimeout(function () {   

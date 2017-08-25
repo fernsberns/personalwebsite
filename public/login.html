@@ -20,6 +20,32 @@
             <br>
             <a href="#"><small>forgot password?</small></a>
             <br>
+
+            <div ng-controller="ChatController"> 
+            <div ng-repeat="acc in listofaccounts | filter :{email:email}" >
+
+              <input type="text" ng-model="accountemail = acc.email"></p>
+
+              <p type="text" id="accpass" ng-bind="accountpass = acc.password"> </p>
+
+
+
+
+            </div>
+            </div>
+
+              <p type="text" placeholder="from here" id="fromhere"></p>
+
+              <input type="text" placeholder="to here" id="tohere">
+
+            <div ng-controller="loginCtrl">
+              <input type="text" > 
+
+              <p ng-model="acceml" ng-bind="email"></p>
+              <p ng-bind="password"></p>
+              <input type="text" ng-model="password">
+            </div>
+
             <br>
             <a href="#" style="text-decoration: none;"><i class="fa fa-fw fa-user text-primary m-2"></i> Create Account</a>
           </form>

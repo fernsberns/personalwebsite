@@ -15,6 +15,11 @@ app.use(bodyParser.json());
 
 var db = mongojs('mongodb://admin:pass@ds035766.mlab.com:35766/chatdb', ['listofmessages']);
 var db2 = mongojs('mongodb://admin:pass@ds035766.mlab.com:35766/chatdb', ['listofusers']);
+var db3 = mongojs('mongodb://admin:pass@ds035766.mlab.com:35766/chatdb', ['listofaccounts']);
+
+
+
+
 
 //db 
 
@@ -89,6 +94,39 @@ app.get('/listofusers/:id',function(req,res){
 	});
 });
 
+//db3
+
+app.get('/listofaccounts', function(req, res){
+	console.log("Receive a GET request")
+
+	db3.listofaccounts.find(function(err,docs){
+		console.log(docs);
+		res.json(docs);
+	});
+});
+
+app.post('/listofaccounts', function(req, res){
+	console.log(req.body);
+	db3.listofaccounts.insert(req.body, function(err, doc){
+		res.json(doc);
+	});
+});
+
+app.delete('/listofaccounts/:id',function(req,res){
+	var id=req.params.id;
+	console.log(id);
+	db3.listofaccounts.remove({_id:mongojs.ObjectId(id)},function(err,doc){
+		res.json(doc);
+	});
+});
+
+app.get('/listofaccounts',function(req,res){
+	var id=req.params.id;
+	console.log(id);
+	db3.listofaccounts.findOne({email:mongojs.ObjectId(id)},function(err,doc){
+		res.json(doc);
+	});
+});
 
 //app.put('/listofmessages/:id',function(req,res){
 //	var id=req.params.id;

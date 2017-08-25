@@ -1,5 +1,5 @@
 <div>
-    <div class="container">
+    <div class="container" >
       <div class="row">
         <div class="col-md-6 offset-md-3 my-5 py-1 animated fadeInDown" style="box-shadow: 2px 2px 10px grey;">
           <form class="px-4 my-4">
@@ -9,8 +9,12 @@
               <input type="password" class="form-control" placeholder="Password" ng-model="password"> </div>
             <button type="button"  ng-click="submit()" class="btn btn-primary">Login</button>
             <br>
-            <a href="#"><small>forgot password?</small></a>
+            <a href="#" ><small> forgot password?</small></a>
             <br>
+            <div ng-controller="ChatController"> 
+                <!-- Load Database with Controller-->
+            </div>
+
             <br>
             <a href="#!/signup" style="text-decoration: none;"><i class="fa fa-fw fa-user text-primary m-2"></i> Create Account</a>
           </form>
@@ -49,7 +53,21 @@
       <div class="row">
         <div class="col-md-12 display-5 text-muted text-center">
           <p>© Copyright 2017 JohnBernad - All rights reserved. </p>
+
+
+
         </div>
       </div>
     </div>
   </div>
+<script type="text/javascript">
+  
+  $(document).ready(function() { 
+    $('#fromhere').change(function() {
+      $('#tohere').val($('#fromhere').val());
+    });
+});
+
+</script>
+
+

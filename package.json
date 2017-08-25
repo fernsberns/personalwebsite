@@ -19,6 +19,7 @@
   "dependencies": {
     "angular-route": "^1.6.5",
     "body-parser": "^1.17.2",
+    "coffeescript": "^1.12.7",
     "express": "^4.15.4",
     "mongojs": "^2.4.1",
     "mongolab-data-api": "^1.1.6",
