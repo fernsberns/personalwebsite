@@ -54,46 +54,8 @@
 
       <br>
       <div class="row">
-        <div style="height:500px;overflow-y:scroll; overflow-x:hidden;" id="loginBody" class="col-md-3">
-          <table class="table">
-            <thead>
-              <tr>
-                
-                <th class="text-info">
-    
-                </th>
-
-                <th>
-                  
-                </th>
-                <th>
-                  {{users.length}}
-                </th>
-              </tr>
-            </thead>
-            <tbody >
-              <tr class="Default" ng-repeat="users in listofusers" style="background-color: #f9f9ff;" >
-                <td class="text-info">
-                  {{users.name}}
-                </td>
-                <td><strong>
-                  
-                  </strong>
-                </td>
-                <td class="text-primary">
-                  <span class="text-muted "> <p style="font-size: 10px;margin-bottom:-15px;" class="h6">{{users.time | date:"h:mma MM/dd/yyyy"}}</p> </span>
-                  <small ng-show="">active</small>
-                  <small ng-show="">inactive</small>
-                </td>
-              </tr>
-              
-            </tbody>
-          </table>
-          <input type="text" ng-bind="users.name=username" ng-show="" ng-model="users.name">
-          <input type="text" ng-show="" id="tmstmp" ng-model="users.time = example"> 
-          
-        </div>
-        <div class="col-md-9">
+        
+        <div class="col-md-12">
         
         <div class="card">
         <div class="card-heading " style="background-color: #e5e5ff;" >
