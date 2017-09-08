@@ -3,7 +3,8 @@ var mongojs = require('mongojs');
 var bodyParser = require('body-parser');
 var socket = require('socket.io');
 var mLab = require('mongolab-data-api')('z127-aeTjCC6pmYw0HgMBkVTYrutkJiS');
-
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 var app = express();
 
@@ -16,7 +17,23 @@ app.use(bodyParser.json());
 var db = mongojs('mongodb://admin:pass@ds035766.mlab.com:35766/chatdb', ['listofmessages']);
 var db2 = mongojs('mongodb://admin:pass@ds035766.mlab.com:35766/chatdb', ['listofusers']);
 var db3 = mongojs('mongodb://admin:pass@ds035766.mlab.com:35766/chatdb', ['listofaccounts']);
+var db4 = mongojs('mongodb://admin:pass@ds035766.mlab.com:35766/chatdb', ['listofsubscribers']);
 
+
+const subscribing = {
+  to: 'johnbernad6@gmail.com',
+  from: 'johnbernad6@company1.com',
+  subject: 'Thank you for subscribing to Company1',
+  text: 'This email is sent through sendgrid a node Simple Mail Transfer Protocol',
+  html: '<strong>have a nice day 😁</strong>',
+};
+const registering = {
+  to: 'johnbernad6@gmail.com',
+  from: 'johnbernad6@company1.com',
+  subject: 'Thank you for registering to Company1',
+  text: 'This email is sent through sendgrid a Node Simple Mail Transfer Protocol',
+  html: '<p>This email is sent through sendgrid a Node.js server module using Simple Mail Transfer Protocol<br><br><br><button style="" ><a href="company1.herokuapp.com">click here to return to the site.</a></button> <br></p>',
+};
 
 
 
@@ -128,6 +145,42 @@ app.get('/listofaccounts',function(req,res){
 	});
 });
 
+//db4 
+
+
+app.get('/listofsubscribers', function(req, res){
+	console.log("Receive a GET request")
+
+	db4.listofsubscribers.find(function(err,docs){
+		console.log(docs);
+		res.json(docs);
+	});
+});
+
+app.post('/listofsubscribers', function(req, res){
+	console.log(req.body);
+	db4.listofsubscribers.insert(req.body, function(err, doc){
+		res.json(doc);
+	});
+});
+
+app.delete('/listofsubscribers/:id',function(req,res){
+	var id=req.params.id;
+	console.log(id);
+	db4.listofsubscribers.remove({_id:mongojs.ObjectId(id)},function(err,doc){
+		res.json(doc);
+	});
+});
+
+app.get('/listofsubscribers/:id',function(req,res){
+	var id=req.params.id;
+	console.log(id);
+	db4.listofsubscribers.findOne({_id:mongojs.ObjectId(id)},function(err,doc){
+		res.json(doc);
+	});
+});
+
+
 //app.put('/listofmessages/:id',function(req,res){
 //	var id=req.params.id;
 //	console.log(req.body.LastName);
@@ -165,7 +218,12 @@ io.on('connection', function(socket){
     console.log('user disconnected');
     	io.sockets.emit('userdisconnect');
 
-  });
+  	});
+
+  	socket.on('sendEML',function(){
+
+		sgMail.send(subscribing);
+	});
 
 	
 

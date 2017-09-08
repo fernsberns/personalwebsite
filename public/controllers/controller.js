@@ -8,7 +8,9 @@ WebApp.config(['$routeProvider', function($routeProvider){
 
 	$routeProvider
 	.when('/',{
-		templateUrl: 'views/landingpage.html'
+		templateUrl: 'views/landingpage.html',
+		controller: 'ChatController'
+
 	})
 	.when('/home',{
 		resolve: {
@@ -49,7 +51,8 @@ WebApp.config(['$routeProvider', function($routeProvider){
 		controller: 'ChatController'
 	})
 	.when('/contactus',{
-		templateUrl: 'views/contactus.html'
+		templateUrl: 'views/contactus.html',
+		controller: 'ChatController'
 	})
 	.otherwise({
 		redirectTo: '/'
@@ -197,7 +200,21 @@ $scope.addUser= function(){
 	});
 };
 
+$scope.addSubscriber= function(){
+	console.log($scope.subscribers);
 
+	$http.post('/listofsubscribers', $scope.subscribers).then(function(response){
+		console.log(response);
+		sendEmail();
+	});
+};
+
+
+var sendEmail = function(){
+
+	socket.emit('sendEML');
+	console.log('email sent :D');
+	};
 
 
 socket.on('refresh',function(){
