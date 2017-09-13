@@ -8,28 +8,66 @@
   <link rel="stylesheet" href="https://pingendo.github.io/templates/blank/theme.css" type="text/css"> </head>
   <link rel="stylesheet" href="animate.css">
 
+
 <body ng-controller="EmailController">
   <div class="py-5">
     <div class="container my-2">
-      <div class="row offset-md-4 mx-5 animated fadeInDown" style="animation-delay: 1s; box-shadow: 2px 2px 10px grey;">
+      <div class="row offset-md-4 mx-5 animated fadeInDown" style="animation-delay: 2s; box-shadow: 2px 2px 10px grey;">
         <div class="col-md-6" id="map" style="width: 400px; height: 525px; background: grey;"> </div>
         <div class="col-md-6 my-2"> <i class="fa fa-fw fa-phone text-primary"></i> <small> &nbsp; +1 707 342 3998</small>
           <br><i class="fa fa-fw fa-envelope text-primary"></i> <small class="display"> &nbsp; johnbernad6@gmail.com</small>
           <br><i class="fa fa-fw fa-map-marker text-primary"></i> <small class="py-4"> 1601 Barton Rd, Redlands CA 92373</small>
-          <form class="pi-draggable my-4">
+          <form id="emailform" class="pi-draggable my-4">
+          <div class="form-group">Email us directly here!</div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Name" style="height:25px"> </div>
+              <input type="text" class="form-control" ng-init="email.name" ng-model="email.name" placeholder="Your Name" style="height:25px"> </div>
             <div class="form-group">
-              <input type="email" class="form-control" placeholder="Email" style="height:25px"> </div>
+              <input type="email" class="form-control" ng-init="email.add" ng-model="email.add" placeholder="Your Email" style="height:25px"> </div>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Subject" style="height:25px"> </div>
-            <div class="form-group"> <textarea placeholder="message" style="height:25%;width:100%;border: 1px solid #d6d6d6;resize: none; "></textarea> </div>
-            <button type="submit" ng-click="sendEmail()" class="btn btn-primary fa fa-send px-5 "></button>
+              <input type="text" class="form-control" ng-init="email.subject" ng-model="email.subject" placeholder="Subject" style="height:25px"> </div>
+            <div class="form-group"> <textarea ng-init="email.message" ng-model="email.message" placeholder="message" style="height:25%;width:100%;border: 1px solid #d6d6d6;resize: none; "></textarea> </div>
+
+
+             <button style="background-color:grey; cursor: not-allowed;width:31%;" ng-hide="email.name && email.add && email.subject && email.message" onclick="alert('Please do not leave any blank inputs')" class="btn btn-primary fa fa-send px-5"></button>
+
+            <button ng-show="email.name && email.add && email.subject && email.message" type="submit" onclick="alert('account created successfully')" id="send" ng-click="sendContactemail()" class="btn btn-primary fa fa-send px-5"></button>
+
+            
           </form>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="modal-container-138320" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+               
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×
+              </button>
+              
+            </div>
+            <div class="modal-body">
+              <h3>message sent!</h3>
+            </div>
+
+            <div class="modal-footer">
+              
+              <button class="btn btn-primary" data-dismiss="modal">
+                continue
+              </button> 
+              
+              
+            
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+
   <div class="py-1 bg-info" id="footer">
     <div class="container">
       <div class="row">
@@ -83,6 +121,19 @@
 
     }
   </script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    $("#send").click(function(){
+         $('#modal-container-138320').modal('show');
+         $("#emailform").trigger('reset');
+    });
+
+  
+});
+    
+    
+</script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js" ></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
   <script src="controllers/emailcontroller.js"></script>

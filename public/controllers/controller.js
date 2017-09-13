@@ -46,6 +46,33 @@ WebApp.config(['$routeProvider', function($routeProvider){
 
 
 	})
+	.when('/about',{
+		resolve: {
+			"check": function($location, $rootScope){
+				if($rootScope.loggedIn == true){
+					$location.path('/about');
+				}
+				else{
+					$location.path('/');
+				}
+			}
+		},
+		templateUrl: 'views/about.html',
+	})
+	.when('/projects',{
+		resolve: {
+			"check": function($location, $rootScope){
+				if($rootScope.loggedIn == true){
+					$location.path('/projects');
+				}
+				else{
+					$location.path('/');
+				}
+			}
+		},
+		templateUrl: 'views/projects.html',
+
+	})
 	.when('/signup',{
 		templateUrl: 'views/signup.html',
 		controller: 'ChatController'
@@ -86,7 +113,11 @@ var myVar;
 	if($scope.email == EML && $scope.password == PSS ){
 		$rootScope.loggedIn = true;
 		$location.path('/home');
+		$http.get('/logincookie').then(function (response) {
+			
+		})
 		}
+
 	else{
 		alert('invalid credentials');
 		
@@ -94,6 +125,7 @@ var myVar;
 	};
 	$scope.logout = function(){
 		$rootScope.loggedIn = false;
+		localStorage.clearAll();
 	};
 
 
@@ -198,6 +230,13 @@ $scope.addUser= function(){
 		refresh2();
 		socket.emit('refresh2');
 	});
+
+		setTimeout(function (){
+
+			sendEmail3();
+			window.location = "https://www.example.com";
+			
+		}, 5000);
 };
 
 $scope.addSubscriber= function(){
@@ -205,14 +244,25 @@ $scope.addSubscriber= function(){
 
 	$http.post('/listofsubscribers', $scope.subscribers).then(function(response){
 		console.log(response);
-		sendEmail();
+		
 	});
+	setTimeout(function (){
+
+			sendEmail();
+			
+		}, 5000);
 };
 
 
 var sendEmail = function(){
 
 	socket.emit('sendEML');
+	console.log('email sent :D');
+	};
+
+var sendEmail3 = function(){
+
+	socket.emit('sendEML3');
 	console.log('email sent :D');
 	};
 

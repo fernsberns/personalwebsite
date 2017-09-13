@@ -1,0 +1,53 @@
+ <div class="py-5 bg-info" style="overflow-x:hidden;" ng-controller="ChatController">
+    <div class="row">
+      <div class="col-md-2">
+        <a class="btn btn-info btn-lg" style="width:107%;" href="#!/home"><small>{{uname}}!</small> <i class=""></i></a>
+        <a class="btn btn-info btn-lg" style="width:107%;" href="#!/home"><small>Dashboard</small> <i class=""></i></a>
+        <a class="btn btn-info btn-lg" style="width:107%;" href="#!/projects"><small>Projects</small><i class=""></i></a>
+        <a class="btn btn-info btn-lg" style="width:107%;" href="#!/messages"><small>Messages</small> <i class=""></i></a>
+        <a class="btn btn-info btn-lg" style="width:107%;background-color:#008ab8;" href="#!/about"><small>About this site </small><i class=""></i></a>
+        <a class="btn btn-info btn-lg" style="width:107%;"  ng-click="logout()" href="index.html"><small>Log out </small><i class=""></i></a>
+      </div>
+      <div class="col-md-9 animated slideInUp" style="background-color: white;box-shadow: 2px 2px 10px grey;">
+        <h2 class="m-3 py-1 text-info">About this website</h2>
+        <hr>
+ 
+        <p class="text-info text-center p-5 mb-5">This website is developed for the purpose of organizing and simplifying projects with my clients. This site has includes a project management system, login and registration, email server and real-time messaging. This all possible through the use of Node.js, Angular.js, HTML5, CSS3, Bootstrap, Socket.io, jQuery, JavaScript, SMTP mail server and MongoDB.
+        </p>
+        <br><br><br>
+        </div>
+      </div>
+    </div>
+
+
+  <div class="py-1" style="background-color: grey;" id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <p class="text-left text-white">Subscribe to get free email updates</p>
+          <form class="form-inline">
+            <div class="form-group">
+              <input type="email" class="form-control" ng-model="subscribers.email" placeholder="Your e-mail here"> </div>
+            <button type="submit" ng-click="addSubscriber()" onclick="alert('Thank you for Subscribing!')" class="btn btn-primary mx-1">Subscribe</button>
+          </form>
+        </div>
+        <div class="col-3 col-md-1 align-self-center">
+          <a href="https://www.facebook.com/fernsberns6" target="blank"><i class="fa fa-fw fa-facebook fa-2x text-white"></i></a>
+        </div>
+        <div class="col-3 col-md-1 align-self-center">
+          <a href="https://www.linkedin.com/in/johnbernad" target="blank"><i class="fa fa-fw fa-linkedin fa-2x text-white"></i></a>
+        </div>
+        <div class="col-3 col-md-1 align-self-center">
+          <a href="https://twitter.com/fernsberns" target="blank"><i class="fa fa-fw fa-twitter text-white fa-2x"></i></a>
+        </div>
+        <div class="col-3 col-md-1 align-self-center">
+          <a href="https://www.instagram.com/fernsberns" target="blank"><i class="fa fa-fw fa-instagram text-white fa-2x"></i></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 display-5 text-muted">
+          <p class="text-center text-white">© Copyright 2017 JohnBernad - All rights reserved. </p>
+        </div>
+      </div>
+    </div>
+  </div>

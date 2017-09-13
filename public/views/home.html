@@ -1,83 +1,89 @@
- <div class="py-5 bg-primary" style="overflow-x:hidden;" ng-controller="ChatController">
+ <div class="py-5 bg-info" style="overflow-x:hidden;" ng-controller="ChatController">
     <div class="row">
       <div class="col-md-2">
-        <a class="btn btn-primary btn-lg" style="width:107%;" href="#!/home"><small>{{uname}}</small> <i class=""></i></a>
-        <a class="btn btn-primary btn-lg" style="width:107%;background-color:#008ab8;" href="#!/home"><small>Home</small> <i class=""></i></a>
-        <a class="btn btn-primary btn-lg" style="width:107%;" href="#!/home"><small>Account </small><i class=""></i></a>
-        <a class="btn btn-primary btn-lg" style="width:107%;" href="#!/home"><small>Preferences </small><i class=""></i></a>
-        <a class="btn btn-primary btn-lg" style="width:107%;" href="#!/messages"><small>Messages</small> <i class=""></i></a>
-        <a class="btn btn-primary btn-lg" style="width:107%;"  ng-click="logout()" href="#"><small>Log out </small><i class=""></i></a>
+        <a class="btn btn-info btn-lg" style="width:107%;" href="#!/home"><small>{{uname}}!</small> <i class=""></i></a>
+        <a class="btn btn-info btn-lg" style="width:107%;background-color:#008ab8;" href="#!/home"><small>Dashboard</small> <i class=""></i></a>
+        <a class="btn btn-info btn-lg" style="width:107%;" href="#!/projects"><small>Projects</small><i class=""></i></a>
+        <a class="btn btn-info btn-lg" style="width:107%;" href="#!/messages"><small>Messages</small> <i class=""></i></a>
+        <a class="btn btn-info btn-lg" style="width:107%;" href="#!/about"><small>About this site </small><i class=""></i></a>
+        <a class="btn btn-info btn-lg" style="width:107%;"  ng-click="logout()" href="index.html"><small>Log out </small><i class=""></i></a>
       </div>
       <div class="col-md-9 animated slideInUp" style="background-color: white;box-shadow: 2px 2px 10px grey;">
-        <h1 class="display-1 text-info">Title</h1>
-        <p class="lead text-info">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.</p>
+        <h2 class="m-3 py-1 text-info">Dashboard</h2>
+        <hr>
+        <p class="text-info text-center">Welcome to my personal website where you can manage projects with me.</p>
         <div class="py-5 section">
           <div class="container">
             <div class="row">
-              <div class="col-md-4">
-                <h2 class="text-sm-center text-primary">HEADING</h2>
-                <p class="text-justify text-info my-1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                  eu, pretium quis, sem. </p>
-              </div>
-              <div class="col-md-4">
-                <h2 class="text-sm-center text-primary">HEADING</h2>
-                <p class="text-justify text-info my-1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                  eu, pretium quis, sem. </p>
-              </div>
-              <div class="col-md-4">
-                <h2 class="text-sm-center text-primary">HEADING</h2>
-                <p class="text-justify text-info my-1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque
-                  eu, pretium quis, sem. </p>
-              </div>
+              <div class="col-md-4"><a href="#!/projects">
+                <h2 class="text-sm-center text-info">Projects</h2>
+                <p class="text-center text-info my-1">manage or propose projects now.</p>
+              </a></div>
+              
+              <div class="col-md-4"><a href="#!/messages">
+                <h2 class="text-sm-center text-info">Message me</h2>
+                <p class="text-center text-info my-1">
+                  Messsage me through a real-time chat application using web sockets.
+                </p></a></div>
+
+              
+
+              <div class="col-md-4"><a href="contactus.html">
+                <h2 class="text-sm-center text-info">Email me</h2>
+                <p class="text-center text-info my-1">Email me through a SMTP javascript server built on this site.</p>
+              </a></div>
+
             </div>
-            <div class="py-5 text-center">
+            <br><br><br><br>
+            <h4 class="text-primary">Popular offers</h4>
+            <div class="pb-5 text-center">
               <div class="container">
                 <div class="row">
                   <div class="col-md-4">
                     <div class="card my-1">
                       <div class="card-block text-center">
-                        <h2 class="text-info">Small</h2>
-                        <h3 class="text-info">10 $</h3>
+                        <h3 class="text-info">Graphic Web Design</h3>
+                        <h3 class="text-info">30 $</h3>
                       </div>
                       <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Using Adobe Photoshop</li>
+                        <li class="list-group-item">starting with 3 pages</li>
+                        <li class="list-group-item">access to all psd files</li>
                       </ul>
                       <div class="card-block">
-                        <a href="#" class="btn btn-block btn-primary">Subscribe</a>
+                        <a href="#" class="btn btn-block btn-info">buy</a>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="card ">
-                      <div class="bg-primary card-block">
-                        <h1 class="card-title text-white">Normal</h1>
-                        <h2 class="text-white">20 $</h2>
+                      <div class="bg-info card-block">
+                        <h3 class="card-title text-white">Front End Web Design</h3>
+                        <h2 class="text-white">50 $</h2>
                       </div>
                       <ul class="list-group list-group-flush ">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Using HTML5&CSS3 and Bootstrap</li>
+                        <li class="list-group-item">Responsive design with animations</li>
+                        <li class="list-group-item">starting with 3 pages</li>
                       </ul>
                       <div class="card-block ">
-                        <a href="#" class="btn btn-block btn-lg btn-primary">Subscribe</a>
+                        <a href="#" class="btn btn-block btn-lg btn-info">buy</a>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="card my-1">
                       <div class="card-block text-xs-center">
-                        <h2 class="card-title text-info">Large</h2>
-                        <h3 class="text-info">30 $</h3>
+                        <h3 class="card-title text-info">Back End Server Development</h3>
+                        <h3 class="text-info">100 $</h3>
                       </div>
                       <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Includes a Login&Registraion system</li>
+                        <li class="list-group-item">Incldes Database Implemetation</li>
+                        <li class="list-group-item">Deployment of website</li>
                       </ul>
                       <div class="card-block ">
-                        <a href="#" class="btn btn-block btn-primary">Subscribe</a>
+                        <a href="#" class="btn btn-block btn-info">buy</a>
                       </div>
                     </div>
                   </div>
@@ -90,30 +96,33 @@
     </div>
     <div class="container"> </div>
   </div>
-  <div class="py-1 bg-info" id="footer">
+  <div class="py-1" style="background-color: grey;" id="footer">
     <div class="container">
       <div class="row">
-        <div class="col-md-9">
-          <p class="text-left">Subscribe to get free email updates</p>
+        <div class="col-md-8">
+          <p class="text-left text-white">Subscribe to get free email updates</p>
           <form class="form-inline">
             <div class="form-group">
-             <input type="email" class="form-control" ng-model="subscribers.email" placeholder="Your e-mail here"> </div>
+              <input type="email" class="form-control" ng-model="subscribers.email" placeholder="Your e-mail here"> </div>
             <button type="submit" ng-click="addSubscriber()" onclick="alert('Thank you for Subscribing!')" class="btn btn-primary mx-1">Subscribe</button>
           </form>
         </div>
-        <div class="col-4 col-md-1 align-self-center">
-          <a href="https://www.facebook.com" target="blank"><i class="fa fa-fw fa-facebook fa-2x text-white"></i></a>
+        <div class="col-3 col-md-1 align-self-center">
+          <a href="https://www.facebook.com/fernsberns6" target="blank"><i class="fa fa-fw fa-facebook fa-2x text-white"></i></a>
         </div>
-        <div class="col-4 col-md-1 align-self-center">
-          <a href="https://twitter.com" target="blank"><i class="fa fa-fw fa-twitter fa-2x text-white"></i></a>
+        <div class="col-3 col-md-1 align-self-center">
+          <a href="https://www.linkedin.com/in/johnbernad" target="blank"><i class="fa fa-fw fa-linkedin fa-2x text-white"></i></a>
         </div>
-        <div class="col-4 col-md-1 align-self-center">
-          <a href="https://www.instagram.com" target="blank"><i class="fa fa-fw fa-instagram text-white fa-2x"></i></a>
+        <div class="col-3 col-md-1 align-self-center">
+          <a href="https://twitter.com/fernsberns" target="blank"><i class="fa fa-fw fa-twitter text-white fa-2x"></i></a>
+        </div>
+        <div class="col-3 col-md-1 align-self-center">
+          <a href="https://www.instagram.com/fernsberns" target="blank"><i class="fa fa-fw fa-instagram text-white fa-2x"></i></a>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12 display-5 text-muted text-center">
-          <p>© Copyright 2017 JohnBernad - All rights reserved. </p>
+        <div class="col-md-12 display-5 text-muted">
+          <p class="text-center text-white">© Copyright 2017 JohnBernad - All rights reserved. </p>
         </div>
       </div>
     </div>

@@ -3,10 +3,12 @@ var mongojs = require('mongojs');
 var bodyParser = require('body-parser');
 var socket = require('socket.io');
 var mLab = require('mongolab-data-api')('z127-aeTjCC6pmYw0HgMBkVTYrutkJiS');
+var cookieParser = require('cookie-parser');
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 var app = express();
+//app.use(cookieParser);
 
 app.use(express.static(__dirname+"/public"));
 app.get('/', function(req, res){
@@ -19,30 +21,29 @@ var db2 = mongojs('mongodb://admin:pass@ds035766.mlab.com:35766/chatdb', ['listo
 var db3 = mongojs('mongodb://admin:pass@ds035766.mlab.com:35766/chatdb', ['listofaccounts']);
 var db4 = mongojs('mongodb://admin:pass@ds035766.mlab.com:35766/chatdb', ['listofsubscribers']);
 
+var emailadd;
+var emailsubject;
+var emailbody;
+var subscriberemail;
 
-const subscribing = {
-  to: 'johnbernad6@gmail.com',
-  from: 'johnbernad6@company1.com',
-  subject: 'Thank you for subscribing to Company1',
-  text: 'This email is sent through sendgrid a node Simple Mail Transfer Protocol',
-  html: '<strong>have a nice day 😁</strong>',
-};
-const registering = {
-  to: 'johnbernad6@gmail.com',
-  from: 'johnbernad6@company1.com',
-  subject: 'Thank you for registering to Company1',
-  text: 'This email is sent through sendgrid a Node Simple Mail Transfer Protocol',
-  html: '<p>This email is sent through sendgrid a Node.js server module using Simple Mail Transfer Protocol<br><br><br><button style="" ><a href="company1.herokuapp.com">click here to return to the site.</a></button> <br></p>',
-};
+
+
+
 
 
 
 
 //db 
 
+
 app.get('/views/:name', function (req, res) {
   var name = req.params.name;
   res.render('views/' + name);
+});
+
+app.get('/logincookie', function (req, res) {
+	res.cookie('logincookie');
+	res.end('cool cookie');
 });
 
 app.get('/listofmessages', function(req, res){
@@ -115,7 +116,7 @@ app.get('/listofusers/:id',function(req,res){
 
 app.get('/listofaccounts', function(req, res){
 	console.log("Receive a GET request")
-
+	emailadd = req.param('email');
 	db3.listofaccounts.find(function(err,docs){
 		console.log(docs);
 		res.json(docs);
@@ -157,11 +158,17 @@ app.get('/listofsubscribers', function(req, res){
 	});
 });
 
+
+
 app.post('/listofsubscribers', function(req, res){
 	console.log(req.body);
-	db4.listofsubscribers.insert(req.body, function(err, doc){
-		res.json(doc);
-	});
+	emailadd = req.param('add');
+	emailbody = req.param('message');
+	emailsubject = req.param('subject');
+	subscriberemail = req.param('email');
+	console.log(emailadd);
+	
+	console.log(subscriberemail);
 });
 
 app.delete('/listofsubscribers/:id',function(req,res){
@@ -194,7 +201,7 @@ app.get('/listofsubscribers/:id',function(req,res){
 var port = process.env.PORT || 3000;
 
 var server = app.listen(port, function() {
-console.log('Company server running on port 3000');
+console.log('server running on port 3000');
 });
 
 var io = socket(server);
@@ -222,10 +229,40 @@ io.on('connection', function(socket){
 
   	socket.on('sendEML',function(){
 
+  	const subscribing = {
+	  to: subscriberemail,
+	  from: 'johnbernad6@gmail.com',
+	  subject: 'Thank you for subscribing to my website!',
+	  text: 'tnx',
+	  html: '<strong>have a nice day 😁</strong>',
+	};
+
 		sgMail.send(subscribing);
 	});
 
-	
+  	socket.on('sendEML2',function(){
+  		
+	const form = {
+	  to: 'johnbernad6@gmail.com',
+	  from: emailadd,
+	  subject: emailsubject,
+	  text: 'Thank you for emailing, I will get to you soon.',
+	  html: '<p>'+ emailbody + ' - sent from contact page' + '</p>' ,
+	};
+		sgMail.send(form);
+	});
+
+	 socket.on('sendEML3',function(){
+  		
+	const registering = {
+	  to: emailadd,
+	  from: 'johnbernad6@gmail.com',
+	  subject: 'Thank you for registering to my personal website',
+	  text: 'This email is sent through sendgrid a Node Simple Mail Transfer Protocol',
+	  html: '<p>Thanks for registering, I hope we can work on some projects soon.</p>',
+	};
+		sgMail.send(registering);
+	});	
 
 });
 

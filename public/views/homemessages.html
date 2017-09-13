@@ -1,13 +1,13 @@
  
- <div class="py-5 bg-primary" style="overflow-x:hidden;" ng-controller="ChatController">
+ <div class="py-5 bg-info" style="overflow-x:hidden;" ng-controller="ChatController">
     <div class="row">
       <div class="col-md-2">
-        <a class="btn btn-primary btn-lg" style="width:107%;" href="#!/home"><small>{{uname}}</small> <i class=""></i></a>
-        <a class="btn btn-primary btn-lg" style="width:107%;" href="#!/home"><small>Home</small> <i class=""></i></a>
-        <a class="btn btn-primary btn-lg" style="width:107%;" href="#!/home"><small>Account </small><i class=""></i></a>
-        <a class="btn btn-primary btn-lg" style="width:107%;" href="#!/home"><small>Preferences </small><i class=""></i></a>
-        <a class="btn btn-primary btn-lg" style="width:107%;background-color:#008ab8;" href="#!/home"><small>Messages</small> <i class=""></i></a>
-        <a class="btn btn-primary btn-lg" style="width:107%;"  ng-click="logout()" href="#"><small>Log out </small><i class=""></i></a>
+        <a class="btn btn-info btn-lg" style="width:107%;" href="#!/home"><small>{{uname}}!</small> <i class=""></i></a>
+        <a class="btn btn-info btn-lg" style="width:107%;" href="#!/home"><small>Dashboard</small> <i class=""></i></a>
+        <a class="btn btn-info btn-lg" style="width:107%;" href="#!/projects"><small>Projects</small><i class=""></i></a>
+        <a class="btn btn-info btn-lg" style="width:107%;background-color:#008ab8;" href="#!/messages"><small>Messages</small></a>
+        <a class="btn btn-info btn-lg" style="width:107%;" href="#!/about"><small>About this site </small><i class=""></i></a>
+        <a class="btn btn-info btn-lg" style="width:107%;"  ng-click="logout()" href="index.html"><small>Log out </small><i class=""></i></a>
       </div>
       <div class="col-md-9 animated slideInUp" style="background-color: white;box-shadow: 2px 2px 10px grey;">
         
@@ -19,9 +19,10 @@
         <div class="col-md-10">
           
           <div class="page-header">
-                  <h2 class="text-primary">
+                  <h2 class="text-info">
                   Messages
                   </h2>
+
           </div>
 
         </div>
@@ -58,8 +59,8 @@
         <div class="col-md-12">
         
         <div class="card">
-        <div class="card-heading " style="background-color: #e5e5ff;" >
-          <h3 class="card-title text-primary m-2">
+        <div class="card-heading bg-info" >
+          <h3 class="card-title text-white m-2">
             Chat Box
           </h3>
         </div>
@@ -78,7 +79,7 @@
           <input type="text" ng-show="" ng-model="messages.name = mname">
           <input type="text" ng-show="" id="tmstmp" ng-model="messages.time = example"> 
           <div class="input-group">
-                    <input type="text" class="form-control" ng-model="messages.message" name="search">
+                    <input type="text" class="form-control" placeholder="Send john a message!" ng-model="messages.message" name="search">
                       <div class="input-group-btn">
                         <button class="btn btn-secondary" onclick="gettmstmp()" ng-click="addMessage()" type="submit"><i class="fa fa-fw fa-paper-plane"></i></button>
 
@@ -117,7 +118,7 @@
 
             <div class="modal-footer">
               
-              <button class="btn btn-primary" id = "btnSearch"
+              <button class="btn btn-info" id = "btnSearch"
                   onclick="loginuser();" ng-click="addUser()" data-dismiss="modal">
                 Done
               </button> 
@@ -143,30 +144,33 @@
     </div>
     <div class="container"> </div>
   </div>
-  <div class="py-1 bg-info" id="footer">
+  <div class="py-1" style="background-color: grey;" id="footer">
     <div class="container">
       <div class="row">
-        <div class="col-md-9">
-          <p class="text-left">Subscribe to get free email updates</p>
+        <div class="col-md-8">
+          <p class="text-left text-white">Subscribe to get free email updates</p>
           <form class="form-inline">
             <div class="form-group">
-      <input type="email" class="form-control" ng-model="subscribers.email" placeholder="Your e-mail here"> </div>
+              <input type="email" class="form-control" ng-model="subscribers.email" placeholder="Your e-mail here"> </div>
             <button type="submit" ng-click="addSubscriber()" onclick="alert('Thank you for Subscribing!')" class="btn btn-primary mx-1">Subscribe</button>
           </form>
         </div>
-        <div class="col-4 col-md-1 align-self-center">
-          <a href="https://www.facebook.com" target="blank"><i class="fa fa-fw fa-facebook fa-2x text-white"></i></a>
+        <div class="col-3 col-md-1 align-self-center">
+          <a href="https://www.facebook.com/fernsberns6" target="blank"><i class="fa fa-fw fa-facebook fa-2x text-white"></i></a>
         </div>
-        <div class="col-4 col-md-1 align-self-center">
-          <a href="https://twitter.com" target="blank"><i class="fa fa-fw fa-twitter fa-2x text-white"></i></a>
+        <div class="col-3 col-md-1 align-self-center">
+          <a href="https://www.linkedin.com/in/johnbernad" target="blank"><i class="fa fa-fw fa-linkedin fa-2x text-white"></i></a>
         </div>
-        <div class="col-4 col-md-1 align-self-center">
-          <a href="https://www.instagram.com" target="blank"><i class="fa fa-fw fa-instagram text-white fa-2x"></i></a>
+        <div class="col-3 col-md-1 align-self-center">
+          <a href="https://twitter.com/fernsberns" target="blank"><i class="fa fa-fw fa-twitter text-white fa-2x"></i></a>
+        </div>
+        <div class="col-3 col-md-1 align-self-center">
+          <a href="https://www.instagram.com/fernsberns" target="blank"><i class="fa fa-fw fa-instagram text-white fa-2x"></i></a>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12 display-5 text-muted text-center">
-          <p>© Copyright 2017 JohnBernad - All rights reserved. </p>
+        <div class="col-md-12 display-5 text-muted">
+          <p class="text-center text-white">© Copyright 2017 JohnBernad - All rights reserved. </p>
         </div>
       </div>
     </div>

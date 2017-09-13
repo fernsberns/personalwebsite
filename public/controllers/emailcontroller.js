@@ -9,8 +9,27 @@ $scope.addSubscriber= function(){
 
 	$http.post('/listofsubscribers', $scope.subscribers).then(function(response){
 		console.log(response);
-		sendEmail();
+		
 	});
+	setTimeout(function (){
+
+			sendEmail();
+			
+		}, 5000);
+};
+
+$scope.sendContactemail= function(){
+	console.log($scope.email);
+
+		$http.post('/listofsubscribers', $scope.email).then(function(response){
+		console.log(response);
+		});
+		setTimeout(function (){
+
+			sendEmail2();
+			
+		}, 5000);
+		
 };
 
 
@@ -20,4 +39,11 @@ var sendEmail = function(){
 	console.log('email sent :D');
 	};
 
+var sendEmail2 = function(){
+
+	socket.emit('sendEML2');
+	console.log('email sent :D');
+	};
+
 }]);
+
