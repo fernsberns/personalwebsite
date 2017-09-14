@@ -29,14 +29,14 @@
         <br><br>
 
                   <div class="form-group">
-              <input type="text" class="form-control" ng-init="email.name" ng-model="email.name" placeholder="Project name" style="height:25px"> </div>
+              <input type="text" class="form-control" ng-init="project.name" ng-model="project.name" placeholder="Project name" style="height:25px"> </div>
           
-            <div class="form-group"> <textarea ng-init="email.message" ng-model="email.message" placeholder="Project Description" style="height:25%;width:100%;border: 1px solid #d6d6d6;resize: none; "></textarea> </div>
+            <div class="form-group"> <textarea ng-init="project.description" ng-model="project.description" placeholder="Project Description" style="height:25%;width:100%;border: 1px solid #d6d6d6;resize: none; "></textarea> </div>
 
 
-             <button style="background-color:grey; cursor: not-allowed;width:31%;" ng-hide="email.name && email.add && email.subject && email.message" onclick="alert('Please do not leave any blank inputs')" class="btn btn-primary fa fa-floppy-o px-5"></button>
+             <button style="background-color:grey; cursor: not-allowed;width:31%;" ng-hide="project.description && project.name" onclick="alert('Please do not leave any blank inputs')" class="btn btn-primary fa fa-floppy-o px-5"></button>
 
-            <button ng-show="email.name && email.add && email.subject && email.message" type="submit" onclick="alert('account created successfully')" id="send" ng-click="sendContactemail()" class="btn btn-primary fa fa-floppy-o px-5"></button>
+            <button ng-show="project.description && project.name" type="submit" onclick="alert('account created successfully')" id="send" ng-click="sendContactemail()" class="btn btn-primary fa fa-floppy-o px-5"></button>
 
 
           <br><br><br><br><br><br><br><br><br>

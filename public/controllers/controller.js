@@ -46,6 +46,12 @@ WebApp.config(['$routeProvider', function($routeProvider){
 
 
 	})
+	.when('/loginbuy',{
+		templateUrl: 'views/loginbuy.html',
+		controller: 'loginCtrl'
+
+
+	})
 	.when('/about',{
 		resolve: {
 			"check": function($location, $rootScope){
