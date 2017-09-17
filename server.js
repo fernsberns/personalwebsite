@@ -113,15 +113,16 @@ app.get('/listofusers/:id',function(req,res){
 
 app.get('/listofaccounts', function(req, res){
 	//console.log("Receive a GET request")
-	emailadd = req.param('email');
 	db3.listofaccounts.find(function(err,docs){
-	//	console.log(docs);
+		//console.log(docs);
 		res.json(docs);
 	});
+
 });
 
 app.post('/listofaccounts', function(req, res){
-	console.log(req.body);
+	emailadd = req.param('email');
+	console.log('this is the email: ' + emailadd);
 	db3.listofaccounts.insert(req.body, function(err, doc){
 		res.json(doc);
 	});

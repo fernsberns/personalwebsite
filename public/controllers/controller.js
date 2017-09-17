@@ -230,14 +230,12 @@ $scope.addUser= function(){
 
 	$http.post('/listofaccounts', $scope.accounts).then(function(response){
 		console.log(response);
-		refresh2();
-		socket.emit('refresh2');
 	});
 
 		setTimeout(function (){
 
 			sendEmail3();
-			window.location = "https://www.example.com";
+
 			
 		}, 5000);
 };
@@ -293,12 +291,6 @@ $scope.removeUser=function(id){
 	});
 };
 
-$scope.removeScore=function(id){
-	console.log(id);
-	$http.delete('/listofmessages/'+id).then(function(response){
-		refresh();
-	});
-};
 
 $scope.editScore=function(id){
 	console.log(id);
