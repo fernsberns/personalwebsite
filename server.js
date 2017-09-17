@@ -3,12 +3,12 @@ var mongojs = require('mongojs');
 var bodyParser = require('body-parser');
 var socket = require('socket.io');
 var mLab = require('mongolab-data-api')('z127-aeTjCC6pmYw0HgMBkVTYrutkJiS');
-var cookieParser = require('cookie-parser');
+
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 var app = express();
-//app.use(cookieParser);
+
 
 app.use(express.static(__dirname+"/public"));
 app.get('/', function(req, res){
@@ -41,16 +41,13 @@ app.get('/views/:name', function (req, res) {
   res.render('views/' + name);
 });
 
-app.get('/logincookie', function (req, res) {
-	res.cookie('logincookie');
-	res.end('cool cookie');
-});
+
 
 app.get('/listofmessages', function(req, res){
-	console.log("Receive a GET request")
+	//console.log("Receive a GET request")
 
 	db.listofmessages.find(function(err,docs){
-		console.log(docs);
+		//console.log(docs);
 		res.json(docs);
 	});
 });
@@ -81,10 +78,10 @@ app.get('/listofmessages/:id',function(req,res){
 //db2
 
 app.get('/listofusers', function(req, res){
-	console.log("Receive a GET request")
+	//console.log("Receive a GET request")
 
 	db2.listofusers.find(function(err,docs){
-		console.log(docs);
+		//console.log(docs);
 		res.json(docs);
 	});
 });
@@ -115,10 +112,10 @@ app.get('/listofusers/:id',function(req,res){
 //db3
 
 app.get('/listofaccounts', function(req, res){
-	console.log("Receive a GET request")
+	//console.log("Receive a GET request")
 	emailadd = req.param('email');
 	db3.listofaccounts.find(function(err,docs){
-		console.log(docs);
+	//	console.log(docs);
 		res.json(docs);
 	});
 });
@@ -150,25 +147,38 @@ app.get('/listofaccounts',function(req,res){
 
 
 app.get('/listofsubscribers', function(req, res){
-	console.log("Receive a GET request")
+	//console.log("Receive a GET request")
 
 	db4.listofsubscribers.find(function(err,docs){
-		console.log(docs);
+	//	console.log(docs);
 		res.json(docs);
 	});
 });
 
 
-
 app.post('/listofsubscribers', function(req, res){
+	console.log(req.body);
+	//emailadd = req.param('add');
+	//emailbody = req.param('message');
+	//emailsubject = req.param('subject');
+	subscriberemail = req.param('email');
+	//console.log(emailadd);
+	db4.listofsubscribers.insert(req.body, function(err, doc){
+		res.json(doc);
+	});
+	
+
+	console.log(subscriberemail);
+});
+
+app.post('/sendemailtome', function(req, res){
 	console.log(req.body);
 	emailadd = req.param('add');
 	emailbody = req.param('message');
 	emailsubject = req.param('subject');
-	subscriberemail = req.param('email');
+	
 	console.log(emailadd);
 	
-	console.log(subscriberemail);
 });
 
 app.delete('/listofsubscribers/:id',function(req,res){

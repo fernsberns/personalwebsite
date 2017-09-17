@@ -119,9 +119,6 @@ var myVar;
 	if($scope.email == EML && $scope.password == PSS ){
 		$rootScope.loggedIn = true;
 		$location.path('/home');
-		$http.get('/logincookie').then(function (response) {
-			
-		})
 		}
 
 	else{

@@ -21,7 +21,7 @@ $scope.addSubscriber= function(){
 $scope.sendContactemail= function(){
 	console.log($scope.email);
 
-		$http.post('/listofsubscribers', $scope.email).then(function(response){
+		$http.post('/sendemailtome', $scope.email).then(function(response){
 		console.log(response);
 		});
 		setTimeout(function (){
