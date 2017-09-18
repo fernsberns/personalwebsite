@@ -2,7 +2,8 @@ var WebApp = angular.module('WebApp', ['ngRoute']);
 var EMLinput;
 var EML;
 var PSS;
-
+var pname;
+var pdesc;
 
 WebApp.config(['$routeProvider', function($routeProvider){
 
@@ -63,7 +64,7 @@ WebApp.config(['$routeProvider', function($routeProvider){
 				}
 			}
 		},
-		templateUrl: 'views/about.html',
+		templateUrl: 'views/about.html'
 	})
 	.when('/projects',{
 		resolve: {
@@ -77,6 +78,7 @@ WebApp.config(['$routeProvider', function($routeProvider){
 			}
 		},
 		templateUrl: 'views/projects.html',
+		controller: 'ChatController'
 
 	})
 	.when('/signup',{
@@ -117,6 +119,7 @@ var myVar;
 
 
 	if($scope.email == EML && $scope.password == PSS ){
+
 		$rootScope.loggedIn = true;
 		$location.path('/home');
 		}
@@ -148,6 +151,8 @@ var myVar;
 
 var uname;
 
+var emailaddress;
+
 var mname;
 
 var refresh=function(){
@@ -177,6 +182,14 @@ var refresh2=function(){
 
 };
 
+var refresh5=function(){
+	$http.get('/listofprojects').then(function(response){
+		console.log("I got the data I requested");
+		$scope.listofprojects = response.data;
+	});
+
+};
+
 var refresh4=function(){
 	$http.get('/listofaccounts').then(function(response){
 		console.log("I got the data I requested");
@@ -190,6 +203,7 @@ var refresh4=function(){
 				PSS = $scope.listofaccounts[i].password;
 				$scope.mname = $scope.listofaccounts[i].fname;
 				$scope.uname = 'Welcome, ' + $scope.listofaccounts[i].fname;
+				$scope.emailaddress = $scope.listofaccounts[i].email;
 				console.log(uname);
 			};
 		};
@@ -212,6 +226,8 @@ function alertFunc() {
 
 	refresh4();
 
+	refresh5();
+
 };
 
 
@@ -222,6 +238,14 @@ $scope.addMessage= function(){
 		console.log(response);
 		refresh();
 		socket.emit('refresh');
+	});
+};
+
+$scope.addProject= function(){
+	console.log($scope.project);
+	$http.post('/listofprojects', $scope.project).then(function(response){
+		console.log(response);
+		refresh5();
 	});
 };
 
@@ -284,27 +308,29 @@ socket.on('userdisconnect',function(){
 
 
 
-$scope.removeUser=function(id){
+$scope.removeProject=function(id){
 	console.log(id);
-	$http.delete('/listofusers/'+id).then(function(response){
-		refresh2();
+	$http.delete('/listofprojects/'+id).then(function(response){
+		refresh5();
 	});
 };
 
-
-$scope.editScore=function(id){
+$scope.editProject=function(id){
 	console.log(id);
-	$http.get('/listofmessages/'+id).then(function(response){
-		$scope.messages=response.data;
+	$http.delete('/listofprojects/'+id).then(function(response){
+		refresh5();
 	});
+	for (var i = $scope.listofprojects.length - 1; i >= 0; i--) {
+
+			if ($scope.listofprojects[i]._id == id) {
+				pname = $scope.listofprojects[i].name;
+				pdesc = $scope.listofprojects[i].description;
+				document.getElementById('name').value=pname;
+				document.getElementById('desc').value=pdesc;
+			};
+		};
 };
 
-$scope.updateScore=function(){
-	console.log($scope.messages._id);
-	$http.put('/listofmessages/'+$scope.messages._id,$scope.scor).then(function(response){
-		refresh();
-	});
-};
 
 
 

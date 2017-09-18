@@ -20,6 +20,7 @@ var db = mongojs('mongodb://admin:pass@ds035766.mlab.com:35766/chatdb', ['listof
 var db2 = mongojs('mongodb://admin:pass@ds035766.mlab.com:35766/chatdb', ['listofusers']);
 var db3 = mongojs('mongodb://admin:pass@ds035766.mlab.com:35766/chatdb', ['listofaccounts']);
 var db4 = mongojs('mongodb://admin:pass@ds035766.mlab.com:35766/chatdb', ['listofsubscribers']);
+var db5 = mongojs('mongodb://admin:pass@ds035766.mlab.com:35766/chatdb', ['listofprojects']);
 
 var emailadd;
 var emailsubject;
@@ -199,15 +200,41 @@ app.get('/listofsubscribers/:id',function(req,res){
 });
 
 
-//app.put('/listofmessages/:id',function(req,res){
-//	var id=req.params.id;
-//	console.log(req.body.LastName);
-//	db.listofmessages.findAndModify({query:{_id:mongojs.ObjectId(id)},
-//		update:{$set:{FirstName:req.body.FirstName,LastName:req.body.LastName,DName:req.body.DName,DateTime:req.body.DateTime}},
-//		new:true},function(err,doc){
-//			res.json(doc);
-//		});
-//});
+//db5 
+
+app.get('/listofprojects', function(req, res){
+	//console.log("Receive a GET request")
+
+	db5.listofprojects.find(function(err,docs){
+		//console.log(docs);
+		res.json(docs);
+	});
+});
+
+app.post('/listofprojects', function(req, res){
+	console.log(req.body);
+	db5.listofprojects.insert(req.body, function(err, doc){
+		res.json(doc);
+	});
+});
+
+app.delete('/listofprojects/:id',function(req,res){
+	var id=req.params.id;
+	console.log(id);
+	db5.listofprojects.remove({_id:mongojs.ObjectId(id)},function(err,doc){
+		res.json(doc);
+	});
+});
+
+
+app.get('/listofprojects/:id',function(req,res){
+	var id=req.params.id;
+	console.log(id);
+	db5.listofprojects.findOne({_id:mongojs.ObjectId(id)},function(err,doc){
+		res.json(doc);
+	});
+});
+
 
 var port = process.env.PORT || 3000;
 
@@ -231,6 +258,8 @@ io.on('connection', function(socket){
 
 		io.sockets.emit('refresh2');
 	});
+
+
 
 	socket.on('disconnect', function(){
     console.log('user disconnected');
