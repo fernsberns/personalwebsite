@@ -17,7 +17,7 @@
           <br>
           <div class="card-body text-info p-1 mx-2" ng-repeat="project in listofprojects | filter :{email:emailaddress}">
 
-            <strong ng-bind="project.name"></strong>
+            <strong ng-init="project.NAME" ng-bind="project.name"></strong>
             <a href=""><i class="fa fa-trash-o pull-right pt-1 px-2 pr-3 text-danger" ng-click="removeProject(project._id)"></a></i> <a href=""><i class="fa fa-pencil-square-o pt-1 pull-right text-warning" ng-click="editProject(project._id)"></i></a><br>
             <small class="text-muted" ng-bind="project.description"></small><small></small>
             <hr>
@@ -26,7 +26,7 @@
 
 
           </div>
-          <p ng-hide="project.NAME && project.DESCRIPTION" class="text-center" style="color: grey;">you currently have no ongoing projects. propose your first project now!</p>
+          <p class="text-center" style="color: grey;"><small>- projects panel -</small></p>
 
         </div>
         <br><br>
