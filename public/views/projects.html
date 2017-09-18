@@ -6,7 +6,7 @@
         <a class="btn btn-info btn-lg" style="width:107%;background-color:#008ab8;" href="#!/projects"><small>Projects</small><i class=""></i></a>
         <a class="btn btn-info btn-lg" style="width:107%;" href="#!/messages"><small>Messages</small> <i class=""></i></a>
         <a class="btn btn-info btn-lg" style="width:107%;" href="#!/about"><small>About this site </small><i class=""></i></a>
-        <a class="btn btn-info btn-lg" style="width:107%;"  ng-click="logout()" href="index.html"><small>Log out </small><i class=""></i></a>
+        <a class="btn btn-info btn-lg" style="width:107%;" ng-click="logout()" href="index.html"><small>Log out </small><i class=""></i></a>
       </div>
       <div class="col-md-9 animated slideInUp" style="background-color: white;box-shadow: 2px 2px 10px grey;">
         <h2 class="m-3 py-1 text-info">Projects</h2>
@@ -15,7 +15,7 @@
         <div class="card card-default">
           <div class="card-heading bg-info text-white p-2">My Projects</div>
           <br>
-          <div class="card-body text-info p-1 mx-2" ng-repeat="project in listofprojects">
+          <div class="card-body text-info p-1 mx-2" ng-repeat="project in listofprojects | filter :{email:emailaddress}">
 
             <strong ng-bind="project.name"></strong>
             <a href=""><i class="fa fa-trash-o pull-right pt-1 px-2 pr-3 text-danger" ng-click="removeProject(project._id)"></a></i> <a href=""><i class="fa fa-pencil-square-o pt-1 pull-right text-warning" ng-click="editProject(project._id)"></i></a><br>
@@ -35,7 +35,7 @@
               <input type="text" class="form-control" id="name" ng-init="project.name" ng-model="project.name" placeholder="Project name" style="height:25px"> </div>
           
             <div class="form-group"> <textarea ng-init="project.description" id="desc" ng-model="project.description" placeholder="Project Description" style="height:25%;width:100%;border: 1px solid #d6d6d6;resize: none;color: grey;"></textarea> </div>
-            <input type="text" style="display: none;" value="{{emailaddress}}">
+            <input type="text" style="display: none;" ng-model="project.email = emailaddress" >
 
              <button style="background-color:grey; cursor: not-allowed;" ng-hide="project.description && project.name" onclick="alert('Please do not leave any blank inputs')" class="btn btn-primary fa fa-floppy-o px-5"></button>
 

@@ -131,7 +131,8 @@ var myVar;
 	};
 	$scope.logout = function(){
 		$rootScope.loggedIn = false;
-		localStorage.clearAll();
+		localStorage.clear();
+		$window.location.reload();
 	};
 
 
@@ -154,6 +155,13 @@ var uname;
 var emailaddress;
 
 var mname;
+
+$scope.logout = function(){
+$rootScope.loggedIn = false;
+localStorage.clear();
+$window.location.reload();
+emailaddress = null;
+};
 
 var refresh=function(){
 	$http.get('/listofmessages').then(function(response){
