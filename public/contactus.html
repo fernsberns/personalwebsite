@@ -16,7 +16,7 @@
         <div class="col-md-6" id="map" style="width: 400px; height: 525px; background: grey;"> </div>
         <div class="col-md-6 my-2"> <i class="fa fa-fw fa-phone text-primary"></i> <small> &nbsp; +1 707 342 3998</small>
           <br><i class="fa fa-fw fa-envelope text-primary"></i> <small class="display"> &nbsp; johnbernad6@gmail.com</small>
-          <br><i class="fa fa-fw fa-map-marker text-primary"></i> <small class="py-4"> 1601 Barton Rd, Redlands CA 92373</small>
+          <br><i class="fa fa-fw fa-map-marker text-primary"></i> <small class="py-4">215 E 117th St New York, NY 10035</small>
           <form id="emailform" class="pi-draggable my-4">
           <div class="form-group">Email us directly here!</div>
             <div class="form-group">
@@ -99,7 +99,7 @@
   <script>
     function myMap() {
     var mapOptions = {
-        center: new google.maps.LatLng(34.0470999,-117.2115565),
+        center: new google.maps.LatLng(40.798394, -73.938638),
         zoom: 10,
         mapTypeId: google.maps.MapTypeId.ROADMAP
         
@@ -108,12 +108,12 @@
    
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-    var image = new google.maps.MarkerImage("pin.png", null, null, null, new google.maps.Size(60,45));
+    var image = new google.maps.MarkerImage("pin.svg", null, null, null, new google.maps.Size(30,40));
 
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
      var marker = new google.maps.Marker({ // Set the marker
-      position: new google.maps.LatLng(34.0470999,-117.2115565), // Position marker to coordinates
+      position: new google.maps.LatLng(40.798394, -73.938638), // Position marker to coordinates
       icon:image, //use our image as the marker
       map: map, // assign the market to our map variable
       title: 'Click here for more details' // Marker ALT Text
