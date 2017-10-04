@@ -25,6 +25,7 @@ var db5 = mongojs('mongodb://admin:pass@ds035766.mlab.com:35766/chatdb', ['listo
 var emailadd;
 var emailsubject;
 var emailbody;
+var emailname;
 var subscriberemail;
 
 
@@ -178,6 +179,7 @@ app.post('/sendemailtome', function(req, res){
 	emailadd = req.param('add');
 	emailbody = req.param('message');
 	emailsubject = req.param('subject');
+	emailname = req.param('name');
 	
 	console.log(emailadd);
 	
@@ -287,7 +289,7 @@ io.on('connection', function(socket){
 	  from: emailadd,
 	  subject: emailsubject,
 	  text: 'Thank you for emailing, I will get to you soon.',
-	  html: '<p>'+ emailbody + ' - sent from contact page' + '</p>' ,
+	  html: '<p>'+ emailbody + '  sender: ' + emailname +  ' - sent from contact page' + '</p>' ,
 	};
 		sgMail.send(form);
 	});
