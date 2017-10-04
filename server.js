@@ -12,7 +12,7 @@ var app = express();
 
 app.use(express.static(__dirname+"/public"));
 app.get('/', function(req, res){
-    res.sendfile('index.html?nocache', { root: __dirname + "/public" } );
+    res.sendfile('index.html', { root: __dirname + "/public" } );
 });
 app.use(bodyParser.json());
 
