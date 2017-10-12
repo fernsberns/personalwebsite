@@ -1,14 +1,14 @@
  <div class="py-5 bg-info" style="overflow-x:hidden;" ng-controller="ChatController">
     <div class="row">
-      <div class="col-md-2">
-        <a class="btn btn-info btn-lg" style="width:107%;" href="#!/home"><small>{{uname}}!</small> <i class=""></i></a>
-        <a class="btn btn-info btn-lg" style="width:107%;" href="#!/home"><small>Dashboard</small> <i class=""></i></a>
-        <a class="btn btn-info btn-lg" style="width:107%;background-color:#008ab8;" href="#!/projects"><small>Projects</small><i class=""></i></a>
-        <a class="btn btn-info btn-lg" style="width:107%;" href="#!/messages"><small>Messages</small> <i class=""></i></a>
-        <a class="btn btn-info btn-lg" style="width:107%;" href="#!/about"><small>About this site </small><i class=""></i></a>
-        <a class="btn btn-info btn-lg" style="width:107%;" ng-click="logout()" href="index.html"><small>Log out </small><i class=""></i></a>
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2">
+        <a class="btn btn-info btn-lg" style="width:107%;" href="#!/home"><small class="d-none d-sm-none d-md-block d-lg-block d-xl-block">{{uname}}!</small></a>
+        <a class="btn btn-info btn-lg col mx-1"  href="#!/home"><small class="d-none d-sm-none d-md-block d-lg-block d-xl-block">Dashboard</small> <i class="fa fa-tachometer d-block d-sm-block d-md-none d-lg-none d-xl-none"></i></a>
+        <a class="btn btn-info btn-lg col mx-1" style="background-color:#008ab8;" href="#!/projects"><small class="d-none d-sm-none d-md-block d-lg-block d-xl-block">Projects</small> <i class="fa fa-folder-open d-block d-sm-block d-md-none d-lg-none d-xl-none"></i></a>
+        <a class="btn btn-info btn-lg col mx-1" href="#!/messages"><small class="d-none d-sm-none d-md-block d-lg-block d-xl-block">Messages</small> <i class="fa fa-comments d-block d-sm-block d-md-none d-lg-none d-xl-none"></i></a>
+        <a class="btn btn-info btn-lg col mx-1" href="#!/about"><small class="d-none d-sm-none d-md-block d-lg-block d-xl-block">About this site</small> <i class="fa fa-info-circle d-block d-sm-block d-md-none d-lg-none d-xl-none"></i></a>
+        <a class="btn btn-info btn-lg col mx-1" ng-click="logout()" href="#!/index.html">  <small class="d-none d-sm-none d-md-block d-lg-block d-xl-block">Log Out</small>  <i class="fa fa-sign-out d-block d-sm-block d-md-none d-lg-none d-xl-none"></i></a>
       </div>
-      <div class="col-md-9 animated fadeIn" style="background-color: white;box-shadow: 2px 2px 10px grey;">
+      <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9 animated fadeIn" style="background-color: white;box-shadow: 2px 2px 10px grey;">
         <h2 class="m-3 py-1 text-info">Projects</h2>
         <hr>
 
