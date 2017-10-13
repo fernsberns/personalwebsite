@@ -28,7 +28,7 @@ $scope.sendContactemail= function(){
 
 			sendEmail2();
 			
-		}, 5000);
+		}, 1000);
 		
 };
 
