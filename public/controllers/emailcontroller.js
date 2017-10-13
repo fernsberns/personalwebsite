@@ -19,26 +19,11 @@ $scope.sendContactemail= function(){
 		$http.post('/sendemailtome', $scope.email).then(function(response){
 		console.log(response);
 		});
-		// setTimeout(function (){
 
-		// 	sendEmail2();
-			
-		// }, 1000);
 		
 };
 
 
-var sendEmail = function(){
-
-	socket.emit('sendEML');
-	console.log('email sent :D');
-	};
-
-var sendEmail2 = function(){
-
-	socket.emit('sendEML2');
-	console.log('email sent :D');
-	};
 
 }]);
 

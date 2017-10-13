@@ -16,7 +16,7 @@
 
             <input style="background-color:grey; cursor: not-allowed;width:31%;" ng-hide="accounts.fname && accounts.lname && accounts.email && accounts.password && accounts.cpassword" onclick="alert('Please do not leave any blank inputs')" class="btn btn-basic text-white" value="Create Account">
 
-            <a href="#!/login"><input ng-show="accounts.fname && accounts.lname && accounts.email && accounts.password && accounts.cpassword " type="submit" onclick="alert('account created successfully')" ng-click="addUser()" class="btn btn-primary" value="Create Account"></a>
+            <a href="#!/login"><input ng-show="accounts.fname && accounts.lname && accounts.email && accounts.password && accounts.cpassword " type="submit" onclick="alert('account created successfully');document.getElementById('subinput').value = null;" ng-click="addUser()" class="btn btn-primary" value="Create Account"></a>
             <br>
             <a href="#!/login"><small>Already have an account?</small></a>
             <br>

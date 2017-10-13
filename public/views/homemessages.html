@@ -153,7 +153,7 @@
           <form class="form-inline">
             <div class="form-group">
               <input type="email" class="form-control" ng-model="subscribers.email" placeholder="Your e-mail here"> </div>
-            <button type="submit" ng-click="addSubscriber()" onclick="alert('Thank you for Subscribing!')" class="btn btn-primary mx-1">Subscribe</button>
+            <button type="submit" ng-click="addSubscriber()" onclick="alert('Thank you for Subscribing!');document.getElementById('subinput').value = null;" class="btn btn-primary mx-1">Subscribe</button>
           </form>
         </div>
         <div class="col-3 col-md-1 align-self-center">
