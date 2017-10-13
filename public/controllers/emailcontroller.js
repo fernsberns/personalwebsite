@@ -11,11 +11,6 @@ $scope.addSubscriber= function(){
 		console.log(response);
 		
 	});
-	setTimeout(function (){
-
-			sendEmail();
-			
-		}, 5000);
 };
 
 $scope.sendContactemail= function(){

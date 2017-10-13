@@ -166,6 +166,17 @@ app.post('/listofsubscribers', function(req, res){
 	//emailsubject = req.param('subject');
 	subscriberemail = req.param('email');
 	//console.log(emailadd);
+
+  	const subscribing = {
+	  to: subscriberemail,
+	  from: 'johnbernad6@gmail.com',
+	  subject: 'Thank you for subscribing to my website!',
+	  text: 'tnx',
+	  html: '<strong>have a nice day 😁</strong>',
+	};
+
+		sgMail.send(subscribing);
+		
 	db4.listofsubscribers.insert(req.body, function(err, doc){
 		res.json(doc);
 	});
@@ -279,15 +290,6 @@ io.on('connection', function(socket){
 
   	socket.on('sendEML',function(){
 
-  	const subscribing = {
-	  to: subscriberemail,
-	  from: 'johnbernad6@gmail.com',
-	  subject: 'Thank you for subscribing to my website!',
-	  text: 'tnx',
-	  html: '<strong>have a nice day 😁</strong>',
-	};
-
-		sgMail.send(subscribing);
 	});
 
   	socket.on('sendEML2',function(){

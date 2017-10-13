@@ -279,25 +279,11 @@ $scope.addSubscriber= function(){
 		console.log(response);
 		
 	});
-	setTimeout(function (){
 
-			sendEmail();
-			
-		}, 5000);
 };
 
 
-var sendEmail = function(){
 
-	socket.emit('sendEML');
-	console.log('email sent :D');
-	};
-
-var sendEmail3 = function(){
-
-	socket.emit('sendEML3');
-	console.log('email sent :D');
-	};
 
 
 socket.on('refresh',function(){
