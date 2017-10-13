@@ -24,11 +24,11 @@ $scope.sendContactemail= function(){
 		$http.post('/sendemailtome', $scope.email).then(function(response){
 		console.log(response);
 		});
-		setTimeout(function (){
+		// setTimeout(function (){
 
-			sendEmail2();
+		// 	sendEmail2();
 			
-		}, 1000);
+		// }, 1000);
 		
 };
 

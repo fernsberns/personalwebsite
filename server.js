@@ -183,6 +183,14 @@ app.post('/sendemailtome', function(req, res){
 	
 	console.log(emailadd);
 	
+	const form = {
+	  to: 'johnbernad6@gmail.com',
+	  from: emailadd,
+	  subject: emailsubject,
+	  text: 'Thank you for emailing, I will get to you soon.',
+	  html: '<p>'+ emailbody + '  sender: ' + emailname +  ' - sent from contact page' + '</p>' ,
+	};
+		sgMail.send(form);
 });
 
 app.delete('/listofsubscribers/:id',function(req,res){
@@ -284,14 +292,7 @@ io.on('connection', function(socket){
 
   	socket.on('sendEML2',function(){
   		
-	const form = {
-	  to: 'johnbernad6@gmail.com',
-	  from: emailadd,
-	  subject: emailsubject,
-	  text: 'Thank you for emailing, I will get to you soon.',
-	  html: '<p>'+ emailbody + '  sender: ' + emailname +  ' - sent from contact page' + '</p>' ,
-	};
-		sgMail.send(form);
+	
 	});
 
 	 socket.on('sendEML3',function(){
