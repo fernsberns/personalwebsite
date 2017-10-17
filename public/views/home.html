@@ -2,7 +2,7 @@
     <div class="row">
       <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2">
         <a class="btn btn-info btn-lg" style="width:107%;" href="#!/home"><small class="d-none d-sm-none d-md-block d-lg-block d-xl-block">{{uname}}!</small></a>
-        <a class="btn btn-info btn-lg col mx-1" style="background-color:#008ab8;" href="#!/home"><small class="d-none d-sm-none d-md-block d-lg-block d-xl-block">Dashboard</small> <i class="fa fa-tachometer d-block d-sm-block d-md-none d-lg-none d-xl-none"></i></a>
+        <a class="btn btn-info btn-lg col mx-1" style="background-color:#1a1a1a;" href="#!/home"><small class="d-none d-sm-none d-md-block d-lg-block d-xl-block">Dashboard</small> <i class="fa fa-tachometer d-block d-sm-block d-md-none d-lg-none d-xl-none"></i></a>
         <a class="btn btn-info btn-lg col mx-1" href="#!/projects"><small class="d-none d-sm-none d-md-block d-lg-block d-xl-block">Projects</small> <i class="fa fa-folder-open d-block d-sm-block d-md-none d-lg-none d-xl-none"></i></a>
         <a class="btn btn-info btn-lg col mx-1" href="#!/messages"><small class="d-none d-sm-none d-md-block d-lg-block d-xl-block">Messages</small> <i class="fa fa-comments d-block d-sm-block d-md-none d-lg-none d-xl-none"></i></a>
         <a class="btn btn-info btn-lg col mx-1" href="#!/about"><small class="d-none d-sm-none d-md-block d-lg-block d-xl-block">About this site</small> <i class="fa fa-info-circle d-block d-sm-block d-md-none d-lg-none d-xl-none"></i></a>
@@ -97,7 +97,8 @@
     </div>
     <div class="container"> </div>
   </div>
-  <div class="py-1" style="background-color: grey;" id="footer">
+
+  <div class="py-1 d-none d-sm-none d-md-block d-lg-block d-xl-block" style="background-color: grey;" id="footer">
     <div class="container">
       <div class="row">
         <div class="col-md-8">
@@ -124,6 +125,38 @@
       <div class="row">
         <div class="col-md-12 display-5 text-muted">
           <p class="text-center text-white">© Copyright 2017 JohnBernad - All rights reserved. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-block d-sm-block d-md-none d-lg-none d-xl-none" style="background-color: grey;" id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <small class="text-left text-white" style="font-size: 50%;">Subscribe to get free email updates</small>
+          <form class="form-inline">
+            <div class="form-group">
+              <input type="email" class="form-control mt-3" style="max-height: 30px;" ng-model="subscribers.email" placeholder="Your e-mail here"> </div>
+            <button type="submit" ng-click="addSubscriber()" onclick="alert('Thank you for Subscribing!');document.getElementById('subinput').value = null;" class="btn btn-sm btn-primary mx-1 mt-1">Subscribe</button>
+          </form>
+        </div>
+        <div class="col-3 col-md-1 align-self-center">
+          <a href="https://www.facebook.com/fernsberns6" target="blank"><i class="fa fa-fw fa-facebook text-white"></i></a>
+        </div>
+        <div class="col-3 col-md-1 align-self-center">
+          <a href="https://www.linkedin.com/in/johnbernad" target="blank"><i class="fa fa-fw fa-linkedin text-white"></i></a>
+        </div>
+        <div class="col-3 col-md-1 align-self-center">
+          <a href="https://twitter.com/fernsberns" target="blank"><i class="fa fa-fw fa-twitter text-white "></i></a>
+        </div>
+        <div class="col-3 col-md-1 align-self-center">
+          <a href="https://www.instagram.com/fernsberns" target="blank"><i class="fa fa-fw fa-instagram text-white"></i></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 display-5 text-muted">
+          <small class="text-center text-white" style="font-size: 50%;">© Copyright 2017 JohnBernad - All rights reserved. </small>
         </div>
       </div>
     </div>
